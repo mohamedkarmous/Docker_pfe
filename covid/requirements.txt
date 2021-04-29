@@ -1,0 +1,10 @@
+Django == 3.2
+pillow > 1.0.0
+djangorestframework 
+markdown    
+django-filter 
+django_cleanup 
+mysqlclient 
+django-resized 
+django-cors-headers
+
