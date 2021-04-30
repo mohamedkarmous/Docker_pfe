@@ -11,6 +11,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { Link, Redirect } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+import { url } from "../../../utils/LocalVariables";
 
 //react grid table importation
 import { AgGridColumn, AgGridReact } from "ag-grid-react";
@@ -117,10 +118,7 @@ function AllTests({
   };
 
   const xrayImage = (props) => {
-    const str = props.data.xray_image.replace(
-      "http://localhost:8000/api/test/frontend/public",
-      "."
-    );
+    const str = props.data.xray_image.replace(url + "/frontend/public", ".");
 
     return <img src={str} width="500" height="600"></img>;
   };

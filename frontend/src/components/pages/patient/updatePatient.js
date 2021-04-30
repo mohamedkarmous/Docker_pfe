@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Navbar from "../../layout/Navbar";
 import SideBar from "../../layout/SideBar";
+import { url } from "../../../utils/LocalVariables";
 
 import { useEffect } from "react";
 import { useState } from "react";
@@ -426,10 +427,7 @@ function UpdatePatient({
   };
 
   const xrayImage = (props) => {
-    const str = props.data.xray_image.replace(
-      "http://localhost:8000/api/test/frontend/public",
-      "."
-    );
+    const str = props.data.xray_image.replace(url + "/frontend/public", ".");
 
     return <img src={str} width="500" height="600"></img>;
   };
@@ -622,7 +620,7 @@ function UpdatePatient({
                           <img
                             src={
                               (patientPiture = patient.patient_picture.replace(
-                                "http://localhost:8000/api/patient/frontend/public",
+                                url + "/frontend/public",
                                 "."
                               ))
                             }

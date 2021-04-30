@@ -14,19 +14,20 @@ const MainPage = ({ auth: { isAuthenticated, loading, user }, logout }) => {
   }, [user]);
 
   const setDashboard = () => {
-    if (user.is_admin == true && !loading) {
-      return <AdminDashboard />;
-    } else if (user.is_doctor == true && !loading) {
-      return <Dashboard />;
-    } else {
-      return null;
+    if (user) {
+      if (user.is_admin == true && !loading) {
+        return <AdminDashboard />;
+      } else if (user.is_doctor == true && !loading) {
+        return <Dashboard />;
+      } else {
+        return null;
+      }
     }
   };
   return (
     <div>
       <SideBar />
       {setDashboard()}
-
       <Footer />
     </div>
   );

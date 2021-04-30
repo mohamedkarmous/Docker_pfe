@@ -19,7 +19,7 @@ export const getPatients = (id = -1) => async (dispatch) => {
   try {
     var res = {};
     if (id == -1) {
-      res = await axios.get(url + "/api/patient/");
+      res = await axios.get(url + "/api/patient");
     } else {
       res = await axios.get(url + "/api/patient?search=" + id);
     }

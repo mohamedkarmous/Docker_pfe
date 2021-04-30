@@ -16,7 +16,7 @@ import ReactMapGL, {
   GeolocateControl,
 } from "react-map-gl";
 import { mapboxTOKEN } from "../../../utils/LocalVariables";
-
+//import "mapbox-gl/dist/mapbox-gl.css";
 const AdminDashboard = ({
   getPatients,
   getTests,

@@ -1,4 +1,4 @@
-export const url = "http://172.18.0.5:8000";
+export const url = "http://172.30.208.1:8000";
 //"http://172.23.16.1:8000";
 
 export const TN = {

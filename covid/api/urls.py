@@ -8,7 +8,7 @@ from rest_framework.authtoken.views import obtain_auth_token
 
 urlpatterns = [
     ### patient url ###
-    path('patient/', view_patient.as_view(), name='list'),
+    path('patient', view_patient.as_view(), name='list'),
     path('patient/<pk>/', patient_details, name='details'),
     path('patient/<pk>/update/', update_patient, name='update'),
     path('patient/<pk>/delete/', delete_patient, name='delete'),
@@ -29,7 +29,7 @@ urlpatterns = [
 
 
     ### test url ###
-    path('test/', view_test.as_view(), name='list'),
+    path('test', view_test.as_view(), name='list'),
     path('test/<pk>/', test_details, name='details'),
     path('test/<pk>/update/', update_test, name='update'),
     path('test/<pk>/delete/', delete_test, name='delete'),
@@ -37,7 +37,7 @@ urlpatterns = [
 
 
     ### diagnotic url ###
-    path('diagnostic/', view_diagnostic.as_view(), name='list'),
+    path('diagnostic', view_diagnostic.as_view(), name='list'),
     path('diagnostic/<pk>/', diagnostic_details, name='details'),
     path('diagnostic/<pk>/update/', update_diagnostic, name='update'),
     path('diagnostic/<pk>/delete/', delete_diagnostic, name='delete'),
