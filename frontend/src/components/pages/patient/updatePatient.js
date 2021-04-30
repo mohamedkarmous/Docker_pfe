@@ -943,14 +943,14 @@ function UpdatePatient({
                       <AgGridColumn
                         headerName="Xray"
                         cellRenderer="xray"
-                        width={550}></AgGridColumn>
+                        width={500}></AgGridColumn>
                       <AgGridColumn
                         headerName="date added"
                         field="date_added"
                         sortable={true}
                         filter={true}
                         floatingFilter={true}
-                        width={150}></AgGridColumn>
+                        width={140}></AgGridColumn>
                       <AgGridColumn
                         headerName="Result"
                         field="result"

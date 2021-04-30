@@ -153,7 +153,7 @@ const PatientTable = ({
             sortable={true}
             filter={true}
             //checkboxSelection={true}
-            width={80}></AgGridColumn>
+            width={70}></AgGridColumn>
           <AgGridColumn
             headerName="First name"
             field="first_name"

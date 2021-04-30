@@ -10,6 +10,7 @@ import { Link, Redirect } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { loadUser } from "../../actions/auth";
 import { changePassword } from "../../actions/users";
+import { url } from "../../utils/LocalVariables";
 
 function Profile({
   auth: { loading, user },
@@ -23,10 +24,14 @@ function Profile({
   useEffect(() => {
     setPage();
   }, []);
-
+  var image = "";
   function setPage() {
     if (!loading) {
       set_form();
+      if (user) {
+        image = user.account_picture.replace("/frontend/public", ".");
+        console.log(image);
+      }
     }
   }
 
@@ -195,44 +200,6 @@ function Profile({
                           />
                         </div>
                       </div>
-                      <div className="col-3">
-                        {/* select */}
-                        <div className="form-group">
-                          <label>Is doctor</label>
-                          <select
-                            className="custom-select"
-                            id="districtSel"
-                            name="is_doctor"
-                            value={is_doctor}
-                            onChange={(e) => onChange(e)}>
-                            <option value="false" selected="selected">
-                              False
-                            </option>
-                            <option value="true" selected="selected">
-                              True
-                            </option>
-                          </select>
-                        </div>
-                      </div>
-                      <div className="col-3">
-                        {/* select */}
-                        <div className="form-group">
-                          <label>Is Admin</label>
-                          <select
-                            className="custom-select"
-                            id="doctor"
-                            name="is_admin"
-                            value={is_admin}
-                            onChange={(e) => onChange(e)}>
-                            <option value="false" selected="selected">
-                              False
-                            </option>
-                            <option value="true" selected="selected">
-                              True
-                            </option>
-                          </select>
-                        </div>
-                      </div>
 
                       <div className="form-group">
                         <label htmlFor="exampleInputFile">
@@ -240,9 +207,10 @@ function Profile({
                         </label>
                         <div className="col-10">
                           <img
-                            src={user.account_picture
-                              .replace("frontend/public", ".")
-                              .replace("./frontend/public", ".")}
+                            src={user.account_picture.replace(
+                              "/frontend/public",
+                              "."
+                            )}
                             width="350"
                             height="350"
                           />

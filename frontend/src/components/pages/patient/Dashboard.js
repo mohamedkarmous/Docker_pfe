@@ -240,7 +240,7 @@ const Dashboard = ({
                         className="chart tab-pane "
                         id="revenue-chart"
                         style={{ position: "relative", height: 500 }}>
-                        <Bar
+                        <Pie
                           data={{
                             labels: Object.keys(InfectedAge),
                             datasets: [

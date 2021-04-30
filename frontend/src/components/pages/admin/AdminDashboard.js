@@ -16,7 +16,8 @@ import ReactMapGL, {
   GeolocateControl,
 } from "react-map-gl";
 import { mapboxTOKEN } from "../../../utils/LocalVariables";
-//import "mapbox-gl/dist/mapbox-gl.css";
+import "mapbox-gl/dist/mapbox-gl.css";
+
 const AdminDashboard = ({
   getPatients,
   getTests,
@@ -532,7 +533,8 @@ const AdminDashboard = ({
                         onViewportChange={(nextViewport) =>
                           setViewport(nextViewport)
                         }
-                        mapStyle="mapbox://styles/mohamed-karmous/ckmz4yiq30q7r17p07wblfzfm">
+                        //mapStyle="mapbox://styles/mohamed-karmous/ckmz4yiq30q7r17p07wblfzfm"
+                        mapStyle="mapbox://styles/mapbox/streets-v11">
                         {() => <Marker></Marker>}
                         <Source
                           id="my_data"

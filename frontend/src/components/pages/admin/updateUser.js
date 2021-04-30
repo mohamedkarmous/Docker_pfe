@@ -8,6 +8,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { Link, Redirect } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+import { url } from "../../../utils/LocalVariables";
 
 function UpdateUser({
   auth: { loading },
@@ -220,7 +221,7 @@ function UpdateUser({
                         <div className="col-10">
                           <img
                             src={user.account_picture.replace(
-                              "http://localhost:8000/api/frontend/public",
+                              url + "/frontend/public",
                               "."
                             )}
                             width="600"

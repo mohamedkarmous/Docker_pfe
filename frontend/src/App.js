@@ -29,6 +29,7 @@ import profile from "./components/pages/profile";
 import { ToastContainer, toast } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";
+import updatePatient from "./components/pages/patient/updatePatient";
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
