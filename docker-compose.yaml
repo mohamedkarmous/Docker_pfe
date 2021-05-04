@@ -1,25 +1,38 @@
 version: "3.3"
 services:
   model_api:
+    restart: always
     build: ./model_api
     container_name: "model_api"
     ports:
       - "5000:5000"
+    networks:
+      my-network:
+          ipv4_address: 172.28.0.2
   django:
+    restart: always
     build: ./covid
     container_name: "django"
     ports:
       - "8000:8000"
     volumes:
       - ./data:/covid/frontend/public/
+    networks:
+      my-network:
+          ipv4_address: 172.28.0.3
 
   react:
+    restart: always
     build: ./frontend
     container_name: "react"
     ports:
-      - "3000:3000"
+      - "80:80"
+      - "443:443"
     volumes:
       - ./data/pictures:/usr/share/nginx/html/pictures
+    networks:
+      my-network:
+          ipv4_address: 172.28.0.4
 
   db:
     image: mysql:5.7
@@ -39,8 +52,17 @@ services:
 
     volumes:
       - my-db:/var/lib/mysql
+    networks:
+      my-network:
+          ipv4_address: 172.28.0.5
 # Names our volume
 volumes:
   my-db:
   data01:
     driver: local
+networks:
+  my-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.28.0.0/16

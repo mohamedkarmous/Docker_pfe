@@ -1,5 +1,7 @@
-export const url = "http://172.30.208.1:8000";
+export const url = 
+"http://52.142.60.162:8000";
 //"http://172.23.16.1:8000";
+//"http://172.28.0.1:8000"
 
 export const TN = {
   Tunis: [36.8008, 10.18],

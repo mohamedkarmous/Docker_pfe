@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'y5e4_j@fow%n(aparf7n(3959d*-49f0x8j8pkm4i#z$3^b9)#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 # Application definition
 
@@ -102,7 +102,7 @@ CORS_ALLOW_HEADERS = (
     'x-csrftoken',
     'x-requested-with',
 )
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*',"https://52.142.60.162/"]
 
 ROOT_URLCONF = 'backend.urls'
 DATE_INPUT_FORMATS = ['%Y-%m-%d']
@@ -164,7 +164,7 @@ DATABASES = {
         'NAME': 'pfe',
         'USER': 'med',
         'PASSWORD': 'med123456789',
-        'HOST': '172.30.208.1',
+        'HOST': '172.28.0.1',
         'PORT': '3306'
     }
 }
@@ -206,3 +206,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+

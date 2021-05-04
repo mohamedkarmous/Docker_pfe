@@ -36,6 +36,7 @@ function UpdatePatient({
   patient: { patient },
   test: { tests },
   diagnostic: { diagnostics },
+  alert,
   update_patient,
   sendTest,
   getTests,
@@ -109,7 +110,7 @@ function UpdatePatient({
   useEffect(() => {
     testPatient();
     setPage();
-  }, [loading]);
+  }, [loading, tests]);
 
   var patientPiture = "";
   function setPage() {
@@ -244,12 +245,12 @@ function UpdatePatient({
     e.preventDefault();
     Data1.append("patient", patient.id);
     Data1.append("account", user.id);
+
     sendTest(Data1);
     document.getElementById("testname").innerHTML = String("");
-
     setTimeout(() => {
       getTests(patient.id);
-    }, 1000);
+    }, 5000);
   };
 
   const onSubmit = async (e) => {
@@ -272,7 +273,6 @@ function UpdatePatient({
 
   const onSubmitDiagnostic = async (e) => {
     e.preventDefault();
-    console.log(formDataDiag);
     DataDiagnostic.append("cough", formDataDiag.cough);
     DataDiagnostic.append("fever", formDataDiag.fever);
     DataDiagnostic.append("sore_throat", formDataDiag.sore_throat);
@@ -297,8 +297,10 @@ function UpdatePatient({
   };
   //table code
   var [selected, setSelected] = React.useState(null);
-  function remove(e, id) {
-    setSelected((selected = id));
+  function removeTest(e, id) {
+    console.log("id:", e);
+    //setSelected((selected = id));
+
     /*
     deleteTest(id.id);
 
@@ -308,6 +310,7 @@ function UpdatePatient({
     */
   }
   function confirmDelete() {
+    console.log(selected);
     deleteTest(selected.id);
   }
 
@@ -343,6 +346,7 @@ function UpdatePatient({
 
   var [selected1, setSelected1] = React.useState(null);
   function remove1(e, id) {
+    console.log("delete diag");
     setSelected1((selected1 = id));
     /*
     deleteTest(id.id);
@@ -418,7 +422,7 @@ function UpdatePatient({
         type="button"
         class="btn btn-block btn-secondary"
         style={{ width: "30px", borderRadius: "4px", height: "30px" }}
-        onClick={(e) => remove(e, props.data)}>
+        onClick={(e) => removeTest(e, props.data)}>
         <ion-icon
           style={{ "font-size": "20px" }}
           name="trash-outline"></ion-icon>
@@ -1029,7 +1033,7 @@ function UpdatePatient({
                   <button
                     type="button"
                     class="btn btn-outline-light"
-                    onClick={confirmDelete1}
+                    onClick={confirmDelete}
                     data-dismiss="modal">
                     Yes delete this Test
                   </button>
@@ -1095,6 +1099,7 @@ function UpdatePatient({
 UpdatePatient.protoTypes = {
   update_patient: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
+  alert: PropTypes.object.isRequired,
   patient: PropTypes.object.isRequired,
   test: PropTypes.object.isRequired,
   diagnostic: PropTypes.object.isRequired,
@@ -1109,6 +1114,7 @@ UpdatePatient.protoTypes = {
 };
 const mapStateToProps = (state) => ({
   auth: state.auth,
+  alert: state.alert,
   patient: state.patient,
   test: state.test,
   diagnostic: state.diagnostic,

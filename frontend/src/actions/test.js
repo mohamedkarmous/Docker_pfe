@@ -16,12 +16,13 @@ export const sendTest = (data) => async (dispatch) => {
       "Content-type": "multipart/form-data",
     },
   };
-  const link = "http://127.0.0.1:5000/predict";
+  const link = "http://52.142.60.162:5000/predict";
   try {
     const res = await axios.post(link, data, config);
     data.append("result", res.data.result);
     try {
       const res2 = await axios.post(url + "/api/test/create", data, config);
+      console.log(res2.data);
 
       if (res.data.result[0] == "C") {
         dispatch(setAlert("Test result: " + res.data.result, "danger"));
@@ -31,7 +32,6 @@ export const sendTest = (data) => async (dispatch) => {
         dispatch(setAlert("Test result: " + res.data.result, "success"));
       }
     } catch (error) {
-      console.log(error);
       dispatch({
         payload: error,
         type: TEST_ERROR,
@@ -40,7 +40,7 @@ export const sendTest = (data) => async (dispatch) => {
 
     dispatch({
       type: SENDTEST,
-      payload: res.data.result,
+      payload: res.data,
     });
   } catch (error) {
     //const errors = error.response.data.errors;

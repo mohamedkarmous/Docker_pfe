@@ -372,23 +372,23 @@ const Dashboard = ({
                           {
                             label: "Covid19",
                             data: Object.values(InfectedTests),
-                            backgroundColor: "#ff8080",
+                           // backgroundColor: "#ff8080",
                             borderColor: "#ff8080",
-                            borderWidth: 1,
+                            borderWidth: 2,
                           },
                           {
                             label: "Pneumonia",
                             data: Object.values(PneumoniaTests),
-                            backgroundColor: "#ffa07a",
+                           // backgroundColor: "#ffa07a",
                             borderColor: "#ffa07a",
-                            borderWidth: 1,
+                            borderWidth: 2,
                           },
                           {
                             label: "Not infected",
                             data: Object.values(NotInfectedTests),
-                            backgroundColor: "#90ee90",
+                            //backgroundColor: "#90ee90",
                             borderColor: "#90ee90",
-                            borderWidth: 1,
+                            borderWidth: 2,
                           },
                         ],
                       }}
@@ -404,13 +404,13 @@ const Dashboard = ({
                         scales: {
                           xAxes: [
                             {
-                              stacked: true,
+                              stacked: false,
                             },
                           ],
 
                           yAxes: [
                             {
-                              stacked: true,
+                              stacked: false,
                               ticks: { beginAtZero: true },
                             },
                           ],

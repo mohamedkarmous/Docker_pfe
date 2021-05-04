@@ -19,7 +19,7 @@ export const sendDiagnostic = (data) => async (dispatch) => {
       "Content-type": "multipart/form-data",
     },
   };
-  const link = "http://127.0.0.1:5000/sympt";
+  const link = "http://52.142.60.162:5000/sympt";
   try {
     const res = await axios.post(link, data, config);
     data.append("result", res.data.result);

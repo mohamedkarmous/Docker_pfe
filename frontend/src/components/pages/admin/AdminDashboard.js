@@ -763,23 +763,23 @@ const AdminDashboard = ({
                             {
                               label: "Covid19",
                               data: Object.values(InfectedTests).reverse(),
-                              backgroundColor: "#ff8080",
+
                               borderColor: "#ff8080",
-                              borderWidth: 1,
+                              borderWidth: 2,
                             },
                             {
                               label: "Pneumonia",
                               data: Object.values(PneumoniaTests).reverse(),
-                              backgroundColor: "#ffa07a",
+
                               borderColor: "#ffa07a",
-                              borderWidth: 1,
+                              borderWidth: 2,
                             },
                             {
                               label: "Not infected",
                               data: Object.values(NotInfectedTests).reverse(),
-                              backgroundColor: "#90ee90",
+
                               borderColor: "#90ee90",
-                              borderWidth: 1,
+                              borderWidth: 2,
                             },
                           ],
                         }}
@@ -788,20 +788,20 @@ const AdminDashboard = ({
                         options={{
                           responsive: true,
                           interaction: {
-                            intersect: false,
+                            intersect: true,
                           },
                           maintainAspectRatio: false,
 
                           scales: {
                             xAxes: [
                               {
-                                //stacked: true,
+                                stacked: false,
                               },
                             ],
 
                             yAxes: [
                               {
-                                //stacked: true,
+                                stacked: false,
                                 ticks: { beginAtZero: true },
                               },
                             ],
