@@ -1,5 +1,4 @@
 import axios from "axios";
-import ReactDOM from "react-dom";
 import { setAlert } from "./alert";
 import {
   GET_DIAGNOSTICS,
@@ -8,7 +7,6 @@ import {
   DELETE_DIAGNOSTIC,
   UPDATE_DIAGNOSTIC,
 } from "./types";
-import { Link, Redirect } from "react-router-dom";
 
 import { url } from "../utils/LocalVariables";
 
@@ -36,7 +34,6 @@ export const sendDiagnostic = (data) => async (dispatch) => {
         dispatch(setAlert("Test result: " + res.data.result, "success"));
       }
     } catch (error) {
-      console.log(error);
       dispatch({
         payload: error,
         type: DIAGNOSTIC_ERROR,
@@ -48,8 +45,6 @@ export const sendDiagnostic = (data) => async (dispatch) => {
       payload: res.data.result,
     });
   } catch (error) {
-    //const errors = error.response.data.errors;
-    console.log(error);
     dispatch({
       payload: error,
       type: DIAGNOSTIC_ERROR,

@@ -22,7 +22,6 @@ import {
 
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { Link, Redirect } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
 //react grid table importation
@@ -88,7 +87,7 @@ function UpdatePatient({
   function set_date_max() {
     var today = new Date();
     var dd = today.getDate();
-    var mm = today.getMonth() + 1; //January is 0!
+    var mm = today.getMonth() + 1;
     var yyyy = today.getFullYear();
     if (dd < 10) {
       dd = "0" + dd;
@@ -110,7 +109,7 @@ function UpdatePatient({
   useEffect(() => {
     testPatient();
     setPage();
-  }, [loading, tests]);
+  }, [loading]);
 
   var patientPiture = "";
   function setPage() {
@@ -213,7 +212,7 @@ function UpdatePatient({
   } = formDataDiag;
 
   var Data = new FormData();
-  var Data1 = new FormData();
+  var DataTest = new FormData();
   var DataDiagnostic = new FormData();
 
   var imagefile = document.querySelector("#file");
@@ -227,7 +226,7 @@ function UpdatePatient({
     );
   };
   const loadPicture1 = (e) => {
-    Data1.append("xray_image", imagetest.files[0]);
+    DataTest.append("xray_image", imagetest.files[0]);
     document.getElementById("testname").innerHTML = String(
       imagetest.files[0].name
     );
@@ -239,14 +238,14 @@ function UpdatePatient({
 
   const onChangeDiag = (e) => {
     setFormDataDiag({ ...formDataDiag, [e.target.name]: e.target.value });
-    console.log(formDataDiag);
   };
   const onSubmit1 = async (e) => {
     e.preventDefault();
-    Data1.append("patient", patient.id);
-    Data1.append("account", user.id);
-
-    sendTest(Data1);
+    imagetest = document.querySelector("#testFile");
+    DataTest.append("xray_image", imagetest.files[0]);
+    DataTest.append("patient", patient.id);
+    DataTest.append("account", user.id);
+    sendTest(DataTest);
     document.getElementById("testname").innerHTML = String("");
     setTimeout(() => {
       getTests(patient.id);
@@ -298,19 +297,9 @@ function UpdatePatient({
   //table code
   var [selected, setSelected] = React.useState(null);
   function removeTest(e, id) {
-    console.log("id:", e);
-    //setSelected((selected = id));
-
-    /*
-    deleteTest(id.id);
-
-    setTimeout(() => {
-      getTests(patient.id);
-    }, 500);
-    */
+    setSelected((selected = id));
   }
   function confirmDelete() {
-    console.log(selected);
     deleteTest(selected.id);
   }
 
@@ -346,15 +335,7 @@ function UpdatePatient({
 
   var [selected1, setSelected1] = React.useState(null);
   function remove1(e, id) {
-    console.log("delete diag");
     setSelected1((selected1 = id));
-    /*
-    deleteTest(id.id);
-
-    setTimeout(() => {
-      getTests(patient.id);
-    }, 500);
-    */
   }
   function confirmDelete1() {
     deleteDiagnostic(selected1.id);
@@ -436,7 +417,6 @@ function UpdatePatient({
     return <img src={str} width="500" height="600"></img>;
   };
 
-  const [rowData, setRowData] = useState(tests);
   const [gridApi, setGridApi] = useState(null);
   const [gridColumnApi, setGridColumnApi] = useState(null);
 
@@ -854,11 +834,6 @@ function UpdatePatient({
                         cellStyle={(e) =>
                           dynamicCellStyleCovid(e)
                         }></AgGridColumn>
-
-                      <AgGridColumn
-                        cellRenderer="update"
-                        width={50}
-                        colId="params"></AgGridColumn>
                       <AgGridColumn
                         cellRenderer="delete"
                         width={50}

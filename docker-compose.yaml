@@ -8,7 +8,7 @@ services:
       - "5000:5000"
     networks:
       my-network:
-          ipv4_address: 172.28.0.2
+        ipv4_address: 172.28.0.2
   django:
     restart: always
     build: ./covid
@@ -19,7 +19,7 @@ services:
       - ./data:/covid/frontend/public/
     networks:
       my-network:
-          ipv4_address: 172.28.0.3
+        ipv4_address: 172.28.0.3
 
   react:
     restart: always
@@ -32,7 +32,7 @@ services:
       - ./data/pictures:/usr/share/nginx/html/pictures
     networks:
       my-network:
-          ipv4_address: 172.28.0.4
+        ipv4_address: 172.28.0.4
 
   db:
     image: mysql:5.7
@@ -54,7 +54,7 @@ services:
       - my-db:/var/lib/mysql
     networks:
       my-network:
-          ipv4_address: 172.28.0.5
+        ipv4_address: 172.28.0.5
 # Names our volume
 volumes:
   my-db:

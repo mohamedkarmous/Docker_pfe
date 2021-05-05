@@ -1,5 +1,4 @@
 import axios from "axios";
-import ReactDOM from "react-dom";
 import { setAlert } from "./alert";
 import {
   GET_TESTS,
@@ -22,7 +21,6 @@ export const sendTest = (data) => async (dispatch) => {
     data.append("result", res.data.result);
     try {
       const res2 = await axios.post(url + "/api/test/create", data, config);
-      console.log(res2.data);
 
       if (res.data.result[0] == "C") {
         dispatch(setAlert("Test result: " + res.data.result, "danger"));
@@ -43,12 +41,12 @@ export const sendTest = (data) => async (dispatch) => {
       payload: res.data,
     });
   } catch (error) {
-    //const errors = error.response.data.errors;
-    console.log(error);
-    dispatch({
-      payload: error,
-      type: TEST_ERROR,
-    });
+    if (error) {
+      dispatch({
+        payload: error,
+        type: TEST_ERROR,
+      });
+    }
   }
 };
 
