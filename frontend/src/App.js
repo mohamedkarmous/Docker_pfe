@@ -1,6 +1,5 @@
 import SignIn from "./components/auth/SignIn";
 import SignUp from "./components/auth/SignUp";
-
 import mainPage from "./components/pages/mainPage";
 import AddPatient from "./components/pages/patient/addPatient";
 import UpdatePatient from "./components/pages/patient/updatePatient";
@@ -15,20 +14,16 @@ import { loadUser } from "./actions/auth";
 import setAuthToken from "./utils/setAuthToken";
 import { useEffect } from "react";
 import PrivateRoute from "./components/routing/PrivateRoute";
-
 import AddUser from "./components/pages/admin/addUser";
-
 //redux
-
 import { Provider } from "react-redux";
 import store from "./store";
 import allTests from "./components/pages/admin/allTests";
 import AllPatients from "./components/pages/admin/AllPatients";
 import profile from "./components/pages/profile";
-
-import { ToastContainer, toast } from "react-toastify";
-
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
 if (localStorage.token) {
   setAuthToken(localStorage.token);
 }
@@ -47,7 +42,6 @@ function App() {
             <div>
               <Alert />
             </div>
-
             <Switch>
               <PrivateRoute exact path="/dashboard" component={mainPage} />
               <PrivateRoute exact path="/addPatient" component={AddPatient} />
@@ -59,7 +53,6 @@ function App() {
               <PrivateRoute exact path="/addUser" component={AddUser} />
               <PrivateRoute exact path="/allTests" component={allTests} />
               <PrivateRoute exact path="/allPatients" component={AllPatients} />
-
               <PrivateRoute
                 exact
                 path="/updatePatient"

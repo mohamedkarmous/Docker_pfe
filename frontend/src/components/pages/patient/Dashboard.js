@@ -367,21 +367,21 @@ const Dashboard = ({
                         datasets: [
                           {
                             label: "Covid19",
-                            data: Object.values(InfectedTests),
+                            data: Object.values(InfectedTests).reverse(),
                             fill: false,
                             borderColor: "#ff8080",
                             borderWidth: 2,
                           },
                           {
                             label: "Pneumonia",
-                            data: Object.values(PneumoniaTests),
+                            data: Object.values(PneumoniaTests).reverse(),
                             fill: false,
                             borderColor: "#ffa07a",
                             borderWidth: 2,
                           },
                           {
                             label: "Not infected",
-                            data: Object.values(NotInfectedTests),
+                            data: Object.values(NotInfectedTests).reverse(),
                             fill: false,
                             borderColor: "#90ee90",
                             borderWidth: 2,

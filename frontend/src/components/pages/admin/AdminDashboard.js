@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { getPatients } from "../../../actions/patient";
 import { getTests } from "../../../actions/test";
 import { getUsers } from "../../../actions/users";
-import { Bar, Doughnut, Pie, Line } from "react-chartjs-2";
+import { Bar, Doughnut, Pie, Line, polarArea } from "react-chartjs-2";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { TN } from "../../../utils/LocalVariables";
@@ -470,17 +470,16 @@ const AdminDashboard = ({
                                   label: "covid",
                                   data: Object.values(covid),
                                   backgroundColor: [
-                                    "rgba(54, 162, 235, 0.2)",
                                     "rgba(255, 99, 132, 0.2)",
-
+                                    "rgba(54, 162, 235, 0.2)",
                                     "rgba(255, 206, 86, 0.2)",
                                     "rgba(75, 192, 192, 0.2)",
                                     "rgba(153, 102, 255, 0.2)",
                                     "rgba(255, 159, 64, 0.2)",
                                   ],
                                   borderColor: [
-                                    "rgba(54, 162, 235, 1)",
                                     "rgba(255, 99, 132, 1)",
+                                    "rgba(54, 162, 235, 1)",
 
                                     "rgba(255, 206, 86, 1)",
                                     "rgba(75, 192, 192, 1)",
